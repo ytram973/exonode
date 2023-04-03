@@ -20,7 +20,7 @@ process.stdin.on('data', (input) => {
         console.log(`Correct, vous avez trouvé en ${nbTry}`);
         process.exit(0);
     }
-    if (nbTry == 10) {
+    if (nbTry == maxTries) {
         console.log("Perdu");
         process.exit(0);
     }
