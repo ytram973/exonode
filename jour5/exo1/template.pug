@@ -1,0 +1,35 @@
+doctype html
+html (lang="fr")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title Document
+    body
+        header: nav: ul#menuItems
+            each menuItem in menuItems
+                if menuItem.isActive
+                    li.nav-active: a(href= menuItem.path) #{menuItem.title}
+                else
+                    li: a(href=menuItem.path) #{menuItem.title}
+        
+        main: div.container 
+            h1 Jean Dupont
+            p Bienvenue sur mon portfolio
+            p Contactez-moi à l'adresse email suivante :
+            output#generate-email
+
+        block script
+
+        footer: ul
+            li: a(href='#') Mentions légales
+            li: a(href='#') CGU
+            li: a(href='#') Réclamations
+
+
+block script
+    script.
+        (function preventSpam() {
+            const b64encodedEmail = 'amVhbi5kdXBvbnRAZ21haWwuY29t';
+            document.getElementById('generate-email').textContent = atob(b64encodedEmail);
+        })();
