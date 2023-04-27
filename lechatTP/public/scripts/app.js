@@ -13,14 +13,6 @@ const messageForm = document.getElementById("message-form");
 const messageInput = document.getElementById("message-input");
 const messagesDiv = document.getElementById("messages");
 
-// onClick on a button class "emoji" to add the emoji to the message input
-const emojis = document.querySelectorAll(".emoji");
-emojis.forEach((emoji) => {
-  emoji.addEventListener("click", () => {
-    messageInput.value += " " + emoji.textContent + " ";
-  });
-});
-
 // Sending form message
 messageForm.addEventListener("submit", (event) => {
   event.preventDefault();
