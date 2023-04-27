@@ -1,0 +1,40 @@
+doctype html
+html
+  head
+    title Dischat
+    meta(charset='UTF-8')
+    link(rel='stylesheet', href='/styles/styles.css')
+  script(src="/socket.io/socket.io.js")
+  body
+    header
+      h1 Dischat
+      div#user
+        p Hello #{username}
+        form(action="/logout", method="POST")
+          input(type="hidden", name="username", value=username)
+          button(type="submit") Logout
+    main
+      aside
+        h2 Channels
+        ul#channel-list
+          each channel in channels
+            li 
+              a(href=`/channel/${channel}?username=${username}`) #{channel}
+      section#chat
+        h2#channel-name #{channelName}
+        div#messages
+          each message in messages
+            div.message
+              p [#{message.date}] #{message.user} : #{message.content}
+        div#typing
+        form#message-form(action='')
+          label#user-label #{username}
+          input#message-input(type='text', name="message", autocomplete="off" placeholder='Tapez votre message ici ...')
+          button(type='submit') Envoyer
+      section#users
+        h2#users-title Users
+        ul#users-list 
+          each user in channelUsers
+            li= user.name
+
+    script(src='/scripts/app.js')
